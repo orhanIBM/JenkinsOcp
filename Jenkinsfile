@@ -34,7 +34,11 @@ pipeline {
 
         }
         // TODO: ADD AN APPROVAL STAGE
-
+        stage('approval){
+          steps {
+            timeout(time: 10, unit: 'MINUTES') { input message "Move to stage 3?" }
+          }
+        }
         stage('stage 3') {
             steps {
                 sh 'echo hello from stage 3!. This is the last stage...'
